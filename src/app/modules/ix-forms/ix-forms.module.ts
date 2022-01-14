@@ -15,6 +15,7 @@ import { IxExplorerComponent } from 'app/modules/ix-forms/components/ix-explorer
 import { IxFieldsetComponent } from 'app/modules/ix-forms/components/ix-fieldset/ix-fieldset.component';
 import { IxFileInputComponent } from 'app/modules/ix-forms/components/ix-file-input/ix-file-input.component';
 import { IxInputComponent } from 'app/modules/ix-forms/components/ix-input/ix-input.component';
+import { IxJiraOauthComponent } from 'app/modules/ix-forms/components/ix-jira-oauth/ix-jira-oauth.component';
 import { IxSelectComponent } from 'app/modules/ix-forms/components/ix-select/ix-select.component';
 import { IxModalHeaderComponent } from 'app/modules/ix-forms/components/ix-slide-in/components/ix-modal-header/ix-modal-header.component';
 import { IxSlideInComponent } from 'app/modules/ix-forms/components/ix-slide-in/ix-slide-in.component';
@@ -53,6 +54,7 @@ import { EnclosureModule } from 'app/pages/system/view-enclosure/enclosure.modul
     IxChipsComponent,
     IxExplorerComponent,
     IxFileInputComponent,
+    IxJiraOauthComponent,
   ],
   exports: [
     IxErrorsComponent,
@@ -68,6 +70,7 @@ import { EnclosureModule } from 'app/pages/system/view-enclosure/enclosure.modul
     IxChipsComponent,
     IxExplorerComponent,
     IxFileInputComponent,
+    IxJiraOauthComponent,
   ],
   providers: [
     IxFormatterService,

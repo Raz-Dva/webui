@@ -10,7 +10,8 @@ import { Job } from 'app/interfaces/job.interface';
   styleUrls: ['./job-item.component.scss'],
 })
 export class JobItemComponent {
-  @Input() job: Job;
+  @Input() job: Job<unknown>;
+  @Input() clickable = false;
   @Output() aborted = new EventEmitter();
   @Output() opened = new EventEmitter();
   readonly JobState = JobState;

@@ -6,6 +6,7 @@ import { LocalStorage } from 'ngx-webstorage';
 import {
   Observable, Observer, Subject, Subscriber,
 } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { ApiEventMessage } from 'app/enums/api-event-message.enum';
 import { JobState } from 'app/enums/job-state.enum';
 import { ApiDirectory, ApiMethod } from 'app/interfaces/api-directory.interface';
@@ -264,18 +265,18 @@ export class WebSocketService {
   }
 
   job<K extends ApiMethod>(method: K, params?: ApiDirectory[K]['params']): Observable<Job<ApiDirectory[K]['response']>> {
-    const source = Observable.create((observer: Subscriber<Job<ApiDirectory[K]['response']>>) => {
-      this.call(method, params).pipe(untilDestroyed(this)).subscribe((jobId) => {
-        this.subscribe('core.get_jobs').pipe(untilDestroyed(this)).subscribe((event) => {
-          if (event.id == jobId) {
-            observer.next(event.fields);
-            if (event.fields.state === JobState.Success) observer.complete();
-            if (event.fields.state === JobState.Failed) observer.error(event.fields);
-          }
-        });
+    const source$ = new Observable((observer: Subscriber<Job<ApiDirectory[K]['response']>>) => {
+      this.call(method, params).pipe(
+        switchMap((jobId) => this.subscribe('core.get_jobs').pipe(filter((event) => event.id == jobId))),
+        map((event) => event.fields),
+        untilDestroyed(this),
+      ).subscribe((job) => {
+        observer.next(job);
+        if (job.state === JobState.Success) observer.complete();
+        if (job.state === JobState.Failed) observer.error(job);
       });
     });
-    return source;
+    return source$;
   }
 
   login(username: string, password: string, otpToken?: string): Observable<boolean> {

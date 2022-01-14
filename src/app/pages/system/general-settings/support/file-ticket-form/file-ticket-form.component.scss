@@ -1,0 +1,12 @@
+:host ::ng-deep {
+  app-job-item {
+    background-color: var(--bg2);
+    border-top: 1px solid var(--lines);
+    color: var(--fg1);
+    margin: 0 -24px 24px;
+  }
+}
+
+.form-actions {
+  margin: 8px 10px;
+}

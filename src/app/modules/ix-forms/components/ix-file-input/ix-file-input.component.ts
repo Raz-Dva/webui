@@ -5,6 +5,8 @@ import {
   ControlValueAccessor, NgControl, FormControl,
 } from '@angular/forms';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { fileListItems } from 'app/helpers/filelist.helper';
+import { IxFormatterService } from '../../services/ix-formatter.service';
 
 @UntilDestroy()
 @Component({
@@ -31,11 +33,12 @@ export class IxFileInputComponent implements ControlValueAccessor {
   constructor(
     public controlDirective: NgControl,
     private cdr: ChangeDetectorRef,
+    private formatter: IxFormatterService,
   ) {
     this.controlDirective.valueAccessor = this;
   }
 
-  onChanged(value: any): void {
+  onChanged(value: FileList): void {
     this.value = value;
     this.onChange(value);
   }
@@ -56,5 +59,16 @@ export class IxFileInputComponent implements ControlValueAccessor {
   setDisabledState?(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
     this.cdr.markForCheck();
+  }
+
+  removeFile(file: File): void {
+    const files = Array.from(this.value);
+    files.splice(files.indexOf(file), 1);
+    this.onChanged(fileListItems(files));
+    this.cdr.markForCheck();
+  }
+
+  formatSize(size: number): string {
+    return this.formatter.convertBytestoHumanReadable(size);
   }
 }

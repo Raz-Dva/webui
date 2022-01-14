@@ -7,6 +7,7 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { MarkdownModule } from 'ngx-markdown';
 import { NgxUploaderModule } from 'ngx-uploader';
 import { MaterialModule } from 'app/app-material.module';
+import { JobsManagerModule } from 'app/components/common/dialog/jobs-manager/jobs-manager.module';
 import { CommonDirectivesModule } from 'app/directives/common/common-directives.module';
 import { CastModule } from 'app/modules/cast/cast.module';
 import { IxFormsModule } from 'app/modules/ix-forms/ix-forms.module';
@@ -42,10 +43,10 @@ import { FailoverComponent } from './failover/failover.component';
 import { GeneralSettingsComponent } from './general-settings/general-settings.component';
 import { GuiFormComponent } from './general-settings/gui-form/gui-form.component';
 import { EulaComponent } from './general-settings/support/eula/eula.component';
+import { FileTicketFormComponent } from './general-settings/support/file-ticket-form/file-ticket-form.component';
 import { LicenseComponent } from './general-settings/support/license/license.component';
 import { ProactiveComponent } from './general-settings/support/proactive/proactive.component';
 import { SupportFormLicensedComponent } from './general-settings/support/support-licensed/support-form-licensed.component';
-import { SupportFormUnlicensedComponent } from './general-settings/support/support-unlicensed/support-form-unlicensed.component';
 import { SupportComponent } from './general-settings/support/support.component';
 import { SysInfoComponent } from './general-settings/support/sys-info/sys-info.component';
 import { KmipComponent } from './kmip/kmip.component';
@@ -62,7 +63,7 @@ import { EnclosureModule } from './view-enclosure/enclosure.module';
     ReactiveFormsModule, NgxUploaderModule, routing,
     MaterialModule, MarkdownModule.forRoot(), TranslateModule, FlexLayoutModule,
     EnclosureModule, CommonDirectivesModule, QRCodeModule,
-    TooltipModule, CoreComponents, CastModule, IxTableModule,
+    TooltipModule, CoreComponents, CastModule, IxTableModule, JobsManagerModule,
   ],
   declarations: [
     AdvancedSettingsComponent,
@@ -87,7 +88,7 @@ import { EnclosureModule } from './view-enclosure/enclosure.module';
     EulaComponent,
     ProactiveComponent,
     SupportFormLicensedComponent,
-    SupportFormUnlicensedComponent,
+    FileTicketFormComponent,
     SysInfoComponent,
     KmipComponent,
     TwoFactorComponent,

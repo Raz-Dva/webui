@@ -23,8 +23,6 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { MaterialModule } from 'app/app-material.module';
 import { ConsolePanelDialogComponent } from 'app/components/common/dialog/console-panel/console-panel-dialog.component';
 import { DownloadKeyDialogComponent } from 'app/components/common/dialog/download-key/download-key-dialog.component';
-import { JobItemComponent } from 'app/components/common/dialog/jobs-manager/components/job-item/job-item.component';
-import { JobsManagerComponent } from 'app/components/common/dialog/jobs-manager/jobs-manager.component';
 import { JobsManagerStore } from 'app/components/common/dialog/jobs-manager/jobs-manager.store';
 import { IcuMissingTranslationHandler } from 'app/core/classes/icu-missing-translation-handler';
 import { createTranslateLoader } from 'app/core/classes/icu-translations-loader';
@@ -45,6 +43,7 @@ import { rootRouterConfig } from './app.routes';
 import { AppCommonModule } from './components/common/app-common.module';
 import { AboutDialogComponent } from './components/common/dialog/about/about-dialog.component';
 import { DirectoryServicesMonitorComponent } from './components/common/dialog/directory-services-monitor/directory-services-monitor.component';
+import { JobsManagerModule } from './components/common/dialog/jobs-manager/jobs-manager.module';
 import { ResilverProgressDialogComponent } from './components/common/dialog/resilver-progress/resilver-progress.component';
 import { TruecommandComponent } from './components/common/dialog/truecommand/truecommand.component';
 import { EntityDialogComponent } from './modules/entity/entity-dialog/entity-dialog.component';
@@ -99,6 +98,7 @@ import { WebSocketService } from './services/ws.service';
     CoreServices.forRoot(),
     CoreComponents,
     FormsModule,
+    JobsManagerModule,
     ReactiveFormsModule,
     EntityModule,
     TerminalModule,
@@ -127,8 +127,6 @@ import { WebSocketService } from './services/ws.service';
     DownloadKeyDialogComponent,
     ResilverProgressDialogComponent,
     SelectDialogComponent,
-    JobsManagerComponent,
-    JobItemComponent,
   ],
   providers: [
     RoutePartsService,
@@ -168,7 +166,6 @@ import { WebSocketService } from './services/ws.service';
     FormInputComponent,
     FormSelectComponent,
     FormParagraphComponent,
-    JobsManagerComponent,
   ],
 })
 export class AppModule {
